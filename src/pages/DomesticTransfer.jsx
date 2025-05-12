@@ -21,6 +21,12 @@ const userQuestions = [
     options: ["YES", "NO"],
   },
   {
+    key: "currencyid",
+    text: "What are the currencies you need for this payment?",
+    type: "checkbox",
+    options: ["USD", "EUR", "GBP"],
+  },
+  {
     key: "TransactionLimit",
     text: "What is the Maximum limit for a single payment transaction ?",
     type: "text",
@@ -62,6 +68,18 @@ const userQuestions = [
     type: "radio",
     options: ["BEN", "OUR", "SHA", "NO"],
   },
+  {
+    key: "IBAN",
+    text: "Do you need IBAN for this payment product ?",
+    type: "radio",
+    options: ["YES", "NO"],
+  },
+  {
+    key: "BIC",
+    text: "Do you need BIC for this payment product ?",
+    type: "radio",
+    options: ["YES", "NO"],
+  },
 ];
 
 const metaQuestions = [
@@ -79,16 +97,6 @@ const metaQuestions = [
     key: "FXRate",
     text: "Is exchange rate needed ?",
     value: "YES",
-  },
-  {
-    key: "ccy",
-    text: "What are the currencies you need for this payment? ",
-    value: "EUR",
-  },
-  {
-    key: "clearing_code",
-    text: "Which Clearing will be used for this payment product?",
-    value: "STEP2",
   },
   {
     key: "Simulation",
@@ -115,19 +123,9 @@ const metaQuestions = [
     text: "Do you need to check Duplicate Entry for Payment ?",
     value: "YES",
   },
-  {
-    key: "IBAN",
-    text: "Do you need IBAN for this payment product ?",
-    value: "YES",
-  },
-  {
-    key: "BIC",
-    text: "Do you need BIC for this payment product ?",
-    value: "YES",
-  },
 ];
 
-const SepaTransfer = () => {
+const DomesticTransfer = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [reviewPage, setReviewPage] = useState(1);
@@ -155,9 +153,9 @@ const SepaTransfer = () => {
     });
   };
 
-  const nextStep = () => setStep((prev) => Math.min(prev + 1, 5));
+  const nextStep = () => setStep((prev) => Math.min(prev + 1, 6));
   const prevStep = () => {
-    if (step === 5 && reviewPage > 1) setReviewPage((p) => p - 1);
+    if (step === 6 && reviewPage > 1) setReviewPage((p) => p - 1);
     else setStep((prev) => Math.max(prev - 1, 1));
   };
 
@@ -174,12 +172,16 @@ const SepaTransfer = () => {
           {
             Product: [
               {
-                paymentProductGroup: "SEPA",
+                paymentProductGroup: "DP",
               },
             ],
           },
         ],
-        payments: [{ currencyId: "EUR" }],
+        payments: formData.currencyid.map((ccy) => {
+          return {
+            currencyId: ccy,
+          };
+        }),
         chargeOptions: [
           {
             chargeOption:
@@ -188,14 +190,11 @@ const SepaTransfer = () => {
                 : formData.allowChargeOption,
           },
         ],
-        gbDescription: "Sepa Payment",
+        gbDescription: "Domestic Payment",
         futureDate: formData.Allowfuturedate,
         allowFx: "YES",
         FXRate: "YES",
         transactionLimit: formData.TransactionLimit,
-        allowSortCode:
-          formData.allowSortCode === "YES" ? "ALLOWED" : "NOT ALLOWED",
-        ClearingChannel: "STEP2",
         allowRequestedCurrency: "NO",
         allowRequiredCreditValue: "NO",
         chkAcctRestrict: "DEBIT",
@@ -206,8 +205,10 @@ const SepaTransfer = () => {
         payThroughBeneficiary: "YES",
         duplicateCheck: "PH-OUTGOING",
         warehouseReqd: "YES",
-        allowIban: "MANDATORY",
-        allowBic: "ALLOWED",
+        allowIban: formData.IBAN === "YES" ? "ALLOWED" : "NOT ALLOWED",
+        allowBic: formData.BIC === "YES" ? "ALLOWED" : "NOT ALLOWED",
+        allowSortCode:
+          formData.allowSortCode === "YES" ? "ALLOWED" : "NOT ALLOWED",
         fraudCheckReqd: "YES",
         rateTolerancePercent: formData.RateTolerantPercent,
         reachabilityCheck:
@@ -215,10 +216,9 @@ const SepaTransfer = () => {
         cutOffTime: formData.CutOffTime,
       },
     };
-
     console.log("body: ", JSON.stringify(payload));
     try {
-      const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/SEPA1/create`;
+      const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/DOMESTC1/create`;
 
       const response = await fetch(endpoint, {
         method: "POST",
@@ -311,7 +311,14 @@ const SepaTransfer = () => {
       </div>
 
       <div className="button-group2">
-        <button type="button" onClick={() => setStep(1)} className="ftsstpbtn">
+        <button
+          type="button"
+          onClick={() => {
+            setStep(1);
+            setReviewPage(1);
+          }}
+          className="ftsstpbtn"
+        >
           {" "}
           {/* 1 to go to the first input page */}← Back to first Step
         </button>
@@ -366,10 +373,10 @@ const SepaTransfer = () => {
   return (
     <div className="container-fluiid">
       <div className="form-container">
-        <h2>Step {step} of 5</h2>
+        <h2>Step {step} of 6</h2>
         <form onSubmit={handleSubmit}>
-          {step < 5 ? renderStepInputs() : renderReview()}
-          {step < 5 && (
+          {step < 6 ? renderStepInputs() : renderReview()}
+          {step < 6 && (
             <div className="button-group">
               {step > 1 && (
                 <button type="button" onClick={prevStep} className="prvsbtn">
@@ -387,4 +394,4 @@ const SepaTransfer = () => {
   );
 };
 
-export default SepaTransfer;
+export default DomesticTransfer;

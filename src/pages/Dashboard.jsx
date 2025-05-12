@@ -29,14 +29,14 @@ export default function Dashboard() {
             </NavLink>
 
             {/* Option 3 */}
-            <NavLink to="account-transfer-form" className="payment-option">
+            <NavLink to="domestic-transfer-form" className="payment-option">
               <div className="payment-icon">🔁</div>
               <h2 className="payment-title">Domestic Payments</h2>
               <p className="payment-description"></p>
             </NavLink>
 
             {/* Option 4 */}
-            <NavLink to="account-transfer-form" className="payment-option">
+            <NavLink to="sepa-transfer-form" className="payment-option">
               <div className="payment-icon">🔄</div>
               <h2 className="payment-title">SEPA Payments</h2>
               <p className="payment-description"></p>

@@ -10,6 +10,7 @@ import FormState from "./context/formState";
 import InationalTransfer from "./pages/InationalTransfer";
 import SepaInstantTransfer from "./pages/SepaInstantTransfer";
 import SepaTransfer from "./pages/SepaTransfer";
+import DomesticTransfer from "./pages/DomesticTransfer";
 function Routing() {
   return (
     <FormState>
@@ -33,6 +34,7 @@ function Routing() {
             element={<SepaInstantTransfer />}
           />
           <Route path="sepa-transfer-form" element={<SepaTransfer />} />
+          <Route path="domestic-transfer-form" element={<DomesticTransfer />} />
           <Route path="payment-status" element={<PaymentStatus />} />
 
           <Route path="*" element={<NotFound />} />
