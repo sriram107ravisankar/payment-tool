@@ -127,7 +127,7 @@ const metaQuestions = [
   },
 ];
 
-const SepaTransfer = () => {
+const SepaInstantTransfer = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [reviewPage, setReviewPage] = useState(1);
@@ -387,4 +387,4 @@ const SepaTransfer = () => {
   );
 };
 
-export default SepaTransfer;
+export default SepaInstantTransfer;

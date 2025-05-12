@@ -8,6 +8,7 @@ import PaymentStatus from "./pages/PaymentStatus";
 import NotFound from "./pages/NotFoundPage";
 import FormState from "./context/formState";
 import InationalTransfer from "./pages/InationalTransfer";
+import SepaInstantTransfer from "./pages/SepaInstantTransfer";
 import SepaTransfer from "./pages/SepaTransfer";
 function Routing() {
   return (
@@ -26,6 +27,10 @@ function Routing() {
           <Route
             path="inational-transfer-form"
             element={<InationalTransfer />}
+          />
+          <Route
+            path="sepa-instant-transfer-form"
+            element={<SepaInstantTransfer />}
           />
           <Route path="sepa-transfer-form" element={<SepaTransfer />} />
           <Route path="payment-status" element={<PaymentStatus />} />

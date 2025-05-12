@@ -2,11 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../assets/css/Dashboard.css";
 
-
 export default function Dashboard() {
   return (
     <>
-      
       <div className="dashboard-wrapper">
         <div className="dashboard-card">
           <h1 className="dashboard-title">
@@ -45,7 +43,7 @@ export default function Dashboard() {
             </NavLink>
 
             {/* Option 5 */}
-            <NavLink to="sepa-transfer-form" className="payment-option">
+            <NavLink to="sepa-instant-transfer-form" className="payment-option">
               <div className="payment-icon">⚡</div>
               <h2 className="payment-title">
                 SEPA-INSTPAY
