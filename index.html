@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/assets/css/style.css">
+  <title>Payment Tool</title>
+
+  <style>
+    body {
+      background-image: url("/dashboardpayment.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: 'Roboto';
+    }
+    .top-nav{
+      position: absolute;
+      top: 3px;
+      width: 100%;
+      padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .top-nav img{
+      padding: 20px;
+      width:100px;
+    }
+   #root{
+    padding-top: 30px;
+   } 
+
+  </style>
+</head>
+
+<body>
+  <div class="top-nav">
+    <img src="/public/payment_logo.png" alt="aspire logo" width="90px" />
+    <img src="/Aspire_logo.svg" alt="aspire logo" width="90px" />
+  </div>
+  <section id="root" ></section>
+  <script type="module" src="/src/main.jsx"></script>
+  
+</body>
+
+</html>

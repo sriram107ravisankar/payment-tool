@@ -1,0 +1,133 @@
+.container-fluiid{
+    
+  display:flex ;
+
+}
+.form-container {
+    width: 80%;
+    background: rgba(226, 255, 255, 0.6); /* 0.5 = 50% opacity */
+    border-radius: 0.5rem;
+    /* max-width: 650px; */
+    margin: auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.button-group {
+   padding-top: 10px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 30px;
+}
+.button-group button {
+    padding: 9px;
+    border: none !important;
+    border-radius:5px;
+}
+.button-group + .button-group {
+    margin-top: 10px;
+}
+
+.button-group2{
+
+padding-top: 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.button-group2 button {
+    padding: 9px;
+    border: none !important;
+    border-radius:5px;
+}
+
+button:disabled {
+    background-color: #d0d0d0;
+    cursor: not-allowed;
+}
+.rviewbtnfd, .rviewbtnbk, .submit-btn{
+
+    background-color: #2d6060;
+    color: white;
+      font-size: 17px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.ftsstpbtn{
+    background-color: #F5EEDD; 
+    color: #06202B;
+      font-size: 17px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+
+.review-list {
+    list-style: none;
+    padding: 0;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.review-question {
+    
+    font-weight: bold;
+}
+
+.review-answer {
+    background-color: #439191;
+    padding: 8px;
+    text-align: right;
+}
+.nxtbtn{
+    padding: 10px 20px;
+    font-size: 17px;
+    background-color: #439191;
+    cursor: pointer;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+.prvsbtn{
+    padding: 10px 20px;
+    font-size: 17px;
+    background-color: white;
+    cursor: pointer;
+    color: #439191;
+    border: none;
+    border-radius: 5px;
+}

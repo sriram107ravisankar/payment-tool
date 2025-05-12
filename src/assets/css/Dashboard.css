@@ -1,0 +1,83 @@
+.dashboard-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card container */
+.dashboard-card {
+  width: 80%;
+  max-height: fit-content;
+  background: rgba(226, 255, 255, 0.3); 
+  padding: 1rem 3.5rem 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 0 1rem;
+}
+
+/* Title */
+.dashboard-title {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #1a202c;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: "center";
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Individual payment option */
+.payment-option {
+  background: white;
+  border-radius: 0.15rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #f7fafc;
+  cursor: pointer;
+  min-height: 200px;
+  min-width: 260px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-option:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Payment option elements */
+.payment-icon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.payment-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1a202c;
+}
+
+.payment-description {
+  margin-top: 0px;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.navbar {
+  padding: 1rem 4rem;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: end;
+}
