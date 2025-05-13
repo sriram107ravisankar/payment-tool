@@ -16,8 +16,53 @@ const FormState = (props) => {
       currencyId,
     });
   };
+
+  //Data for account others
+  const [otherformData, setOtherformData] = useState({
+    futureDate: "",
+    autoRetry: "",
+    currencyId: [],
+    maxLimit: "",
+    checkFundCharge: "",
+    allowCharge: "",
+  });
+
+  const updateOthersformState = ({
+    futureDate,
+    autoRetry,
+    currencyId,
+    maxLimit,
+    checkFundCharge,
+    allowCharge,
+  }) => {
+    console.log(
+      futureDate,
+      autoRetry,
+      currencyId,
+      maxLimit,
+      checkFundCharge,
+      allowCharge
+    );
+    setOtherformData({
+      ...formData,
+      futureDate,
+      autoRetry,
+      currencyId,
+      maxLimit,
+      checkFundCharge,
+      allowCharge,
+    });
+  };
+
   return (
-    <formContext.Provider value={{ formData, updateFormState }}>
+    <formContext.Provider
+      value={{
+        formData,
+        updateFormState,
+        otherformData,
+        updateOthersformState,
+      }}
+    >
       {props.children}
     </formContext.Provider>
   );

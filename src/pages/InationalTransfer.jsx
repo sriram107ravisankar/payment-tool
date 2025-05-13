@@ -284,14 +284,16 @@ const InationalTransfer = () => {
 
       <div className="button-group">
         <button
-          type="button" className="rviewbtnbk"
+          type="button"
+          className="rviewbtnbk"
           onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
           disabled={reviewPage === 1}
         >
           ←
         </button>
         <button
-          type="button" className="rviewbtnfd"
+          type="button"
+          className="rviewbtnfd"
           onClick={() => setReviewPage((p) => Math.min(totalPages, p + 1))}
           disabled={reviewPage === totalPages}
         >

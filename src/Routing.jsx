@@ -6,10 +6,12 @@ import AccountTransferForm from "./pages/AccountTransferForm";
 import AccountTransferSummary from "./pages/AccountTransferSummary";
 import PaymentStatus from "./pages/PaymentStatus";
 import NotFound from "./pages/NotFoundPage";
-import FormState from "./context/formState";
 import InationalTransfer from "./pages/InationalTransfer";
 import SepaInstantTransfer from "./pages/SepaInstantTransfer";
 import SepaTransfer from "./pages/SepaTransfer";
+import AccountOthersForm from "./pages/AccountOthersForm";
+import AccountOthersSummary from "./pages/AccountOthersSummary";
+import FormState from "./context/formstate";
 import DomesticTransfer from "./pages/DomesticTransfer";
 function Routing() {
   return (
@@ -21,6 +23,8 @@ function Routing() {
             path="account-transfer-form"
             element={<AccountTransferForm />}
           />
+
+          <Route path="account-others-form" element={<AccountOthersForm />} />
           <Route
             path="account-transfer-summary"
             element={<AccountTransferSummary />}
@@ -28,6 +32,11 @@ function Routing() {
           <Route
             path="inational-transfer-form"
             element={<InationalTransfer />}
+          />
+
+          <Route
+            path="account-others-summary"
+            element={<AccountOthersSummary />}
           />
           <Route
             path="sepa-instant-transfer-form"

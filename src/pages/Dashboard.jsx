@@ -20,7 +20,7 @@ export default function Dashboard() {
             </NavLink>
 
             {/* Option 2 */}
-            <NavLink to="account-transfer-form" className="payment-option">
+            <NavLink to="account-others-form" className="payment-option">
               <div className="payment-icon">🏦</div>
               <h2 className="payment-title">Account Transfer</h2>
               <p className="payment-description">
