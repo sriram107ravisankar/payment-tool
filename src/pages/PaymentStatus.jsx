@@ -8,7 +8,7 @@ export default function PaymentStatus() {
   const navigate = useNavigate();
   const location = useLocation();
   const {
-    success = false,
+    success = true,
     version = "1",
     paymentId = "",
   } = location.state || {};
@@ -18,6 +18,13 @@ export default function PaymentStatus() {
   return (
     <div className="status-container">
       <div className="status-card">
+        <h1 className="status-title">
+          {success
+            ? isUpdated
+              ? "Payment Product Successfully Updated"
+              : "Payment Product Successfully Created"
+            : "No new changes have been made. Please try again!"}
+        </h1>
         <div className={`status-icon ${success ? "success" : "failure"}`}>
           {success ? (
             <img src={doneImage} alt="Payment Sucessful image" />
@@ -34,13 +41,7 @@ export default function PaymentStatus() {
             </svg>
           )}
         </div>
-        <h1 className="status-title">
-          {success
-            ? isUpdated
-              ? "Payment Product Successfully Updated"
-              : "Payment Product Successfully Created"
-            : "No new changes have been made. Please try again!"}
-        </h1>
+
         {success && paymentId && (
           <p className="status-id">
             Payment Product ID: <strong>{paymentId}</strong>
@@ -61,7 +62,7 @@ export default function PaymentStatus() {
                 )
               }
             >
-              Check the Product Created
+              Verify product with payment
             </button>
           ) : (
             <></>

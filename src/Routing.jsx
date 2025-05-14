@@ -1,18 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
-
 import Dashboard from "./pages/Dashboard";
-import AccountTransferForm from "./pages/AccountTransferForm";
-import AccountTransferSummary from "./pages/AccountTransferSummary";
 import PaymentStatus from "./pages/PaymentStatus";
 import NotFound from "./pages/NotFoundPage";
-import InationalTransfer from "./pages/InationalTransfer";
-import SepaInstantTransfer from "./pages/SepaInstantTransfer";
-import SepaTransfer from "./pages/SepaTransfer";
-import AccountOthersForm from "./pages/AccountOthersForm";
-import AccountOthersSummary from "./pages/AccountOthersSummary";
 import FormState from "./context/formstate";
-import DomesticTransfer from "./pages/DomesticTransfer";
+import ProductCreation from "./pages/ProductCreation";
 function Routing() {
   return (
     <FormState>
@@ -21,29 +13,31 @@ function Routing() {
           <Route index element={<Dashboard />} />
           <Route
             path="account-transfer-form"
-            element={<AccountTransferForm />}
+            element={<ProductCreation productType="actrf" />}
           />
 
-          <Route path="account-others-form" element={<AccountOthersForm />} />
           <Route
-            path="account-transfer-summary"
-            element={<AccountTransferSummary />}
+            path="account-others-form"
+            element={<ProductCreation productType="actrf_other" />}
           />
+
           <Route
             path="inational-transfer-form"
-            element={<InationalTransfer />}
+            element={<ProductCreation productType="inational" />}
           />
 
           <Route
-            path="account-others-summary"
-            element={<AccountOthersSummary />}
+            path="sepa-instant-transfer-form"
+            element={<ProductCreation productType="sepa_inst" />}
           />
           <Route
-            path="sepa-instant-transfer-form"
-            element={<SepaInstantTransfer />}
+            path="sepa-transfer-form"
+            element={<ProductCreation productType="sepa" />}
           />
-          <Route path="sepa-transfer-form" element={<SepaTransfer />} />
-          <Route path="domestic-transfer-form" element={<DomesticTransfer />} />
+          <Route
+            path="domestic-transfer-form"
+            element={<ProductCreation productType="domestic" />}
+          />
           <Route path="payment-status" element={<PaymentStatus />} />
 
           <Route path="*" element={<NotFound />} />

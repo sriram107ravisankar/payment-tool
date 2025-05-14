@@ -5,15 +5,25 @@ const FormState = (props) => {
   const [formData, setFormData] = useState({
     futureDate: "",
     autoRetry: "",
+    applyCharges: "",
     currencyId: [],
+    chargeOptions: "",
   });
-  const updateFormState = ({ futureDate, autoRetry, currencyId }) => {
+  const updateFormState = ({
+    futureDate,
+    autoRetry,
+    currencyId,
+    applyCharges,
+    chargeOptions,
+  }) => {
     console.log(futureDate, autoRetry, currencyId);
     setFormData({
       ...formData,
       futureDate,
       autoRetry,
+      applyCharges,
       currencyId,
+      chargeOptions,
     });
   };
 
