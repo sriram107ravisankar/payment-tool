@@ -68,7 +68,30 @@ const ProductCreation = (props) => {
   const totalSteps = totalInputSteps + 1;
   const [step, setStep] = useState(1);
   const [reviewPage, setReviewPage] = useState(1);
-
+  function updateProductStatus() {
+    switch (productType) {
+      case "actrf":
+        localStorage.setItem("actrf", "true");
+        break;
+      case "actrf_other":
+        localStorage.setItem("actrf_other", "true");
+        break;
+      case "inational":
+        localStorage.setItem("inational", "true");
+        break;
+      case "sepa_inst":
+        localStorage.setItem("sepa_inst", "true");
+        break;
+      case "sepa":
+        localStorage.setItem("sepa", "true");
+        break;
+      case "domestic":
+        localStorage.setItem("domestic", "true");
+        break;
+      default:
+        console.warn("Unknown Product");
+    }
+  }
   function getProductHeading() {
     switch (productType) {
       case "actrf":
@@ -82,7 +105,7 @@ const ProductCreation = (props) => {
       case "sepa":
         return "SEPA Transfer";
       case "domestic":
-        return "Domestic Transfer";
+        return "Payment in local currency within country";
     }
   }
   // Handle input change.
@@ -116,6 +139,7 @@ const ProductCreation = (props) => {
 
     if (response && response.ok) {
       const json = await response.json();
+      updateProductStatus();
       console.log("API call success:", json);
       navigate("/payment-status", {
         state: {
@@ -285,7 +309,7 @@ const ProductCreation = (props) => {
         </div>
         <h3>
           {step < totalSteps
-            ? `Page ${step} of ${totalInputSteps}`
+            ? `(Page ${step} of ${totalInputSteps})`
             : `Review (Page ${reviewPage} of ${totalPages})`}
         </h3>
         <form onSubmit={handleSubmit}>

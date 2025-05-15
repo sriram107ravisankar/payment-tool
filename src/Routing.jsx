@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import PaymentStatus from "./pages/PaymentStatus";
@@ -6,6 +6,22 @@ import NotFound from "./pages/NotFoundPage";
 import FormState from "./context/formstate";
 import ProductCreation from "./pages/ProductCreation";
 function Routing() {
+  useEffect(() => {
+    // Check if localStorage is already initialized
+    if (!localStorage.getItem("isInitialized")) {
+      localStorage.setItem("actrf", "false");
+      localStorage.setItem("actrf_other", "false");
+      localStorage.setItem("inational", "false");
+      localStorage.setItem("sepa", "false");
+      localStorage.setItem("sepa_inst", "false");
+      localStorage.setItem("domestic", "false");
+      // Prevent re-initialization on subsequent renders
+      localStorage.setItem("isInitialized", "true");
+      console.log("localStorage initialized.");
+    } else {
+      console.log("localStorage already initialized.");
+    }
+  }, []);
   return (
     <FormState>
       <Router basename="/payment-tool/">

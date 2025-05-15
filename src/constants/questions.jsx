@@ -91,7 +91,7 @@ export const actrfOtherUserQuestions = [
     key: "currencyId",
     text: "What are the currencies you need for this payment?",
     type: "checkbox",
-    options: ["BEN", "SHA", "OUR"],
+    options: ["USD", "EUR", "GBP"],
   },
   {
     key: "autoRetry",
@@ -100,7 +100,7 @@ export const actrfOtherUserQuestions = [
     options: ["Yes", "No"],
   },
   {
-    key: "maxPaymentLimit",
+    key: "TransactionLimit",
     text: "What is the Maximum limit for a single payment transaction ?",
     type: "range",
     options: ["10000"],
@@ -319,7 +319,7 @@ export const SepaUserQuestions = [
   },
   {
     key: "checkFundsWithCharges",
-    text: "Do you need to check the funds along with the charge amount?",
+    text: "Do you want to check funds availability with charges ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -337,7 +337,7 @@ export const SepaUserQuestions = [
   },
   {
     key: "Reachability Check",
-    text: "Do you need to check the receiver Bank's availability?",
+    text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -346,6 +346,7 @@ export const SepaUserQuestions = [
     text: "what is the cut off time for the last payment to be processed in the same day?",
     type: "text",
     options: [],
+    placeholder: "HH:MM",
   },
   {
     key: "allowChargeOption",
@@ -445,7 +446,7 @@ export const SepaInstUserQuestions = [
   },
   {
     key: "checkFundsWithCharges",
-    text: "Do you need to check the funds along with the charge amount?",
+    text: "Do you want to check funds availability with charges ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -463,7 +464,7 @@ export const SepaInstUserQuestions = [
   },
   {
     key: "Reachability Check",
-    text: "Do you need to check the receiver Bank's availability?",
+    text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -472,6 +473,7 @@ export const SepaInstUserQuestions = [
     text: "what is the cut off time for the last payment to be processed in the same day?",
     type: "text",
     options: [],
+    placeholder: "HH:MM",
   },
   {
     key: "allowChargeOption",
@@ -571,7 +573,7 @@ export const inationalUserQuestions = [
   },
   {
     key: "checkFundsWithCharges",
-    text: "Do you need to check the funds along with the charge amount?",
+    text: "Do you want to check funds availability with charges?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -589,7 +591,7 @@ export const inationalUserQuestions = [
   },
   {
     key: "Reachability Check",
-    text: "Do you need to check the receiver Bank's availability?",
+    text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -598,6 +600,7 @@ export const inationalUserQuestions = [
     text: "what is the cut off time for the last payment to be processed in the same day?",
     type: "text",
     options: [],
+    placeholder: "HH:MM",
   },
   {
     key: "allowChargeOption",
