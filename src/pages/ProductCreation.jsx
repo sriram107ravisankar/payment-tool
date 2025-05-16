@@ -95,7 +95,7 @@ const ProductCreation = (props) => {
   function getProductHeading() {
     switch (productType) {
       case "actrf":
-        return "Account Transfer within same customer's accounts";
+        return "Account Transfer";
       case "actrf_other":
         return "Account Transfer Other";
       case "inational":
@@ -105,7 +105,7 @@ const ProductCreation = (props) => {
       case "sepa":
         return "SEPA Transfer";
       case "domestic":
-        return "Payment in local currency within country";
+        return "Domestic Transfer";
     }
   }
   // Handle input change.
@@ -219,13 +219,13 @@ const ProductCreation = (props) => {
             setStep(1);
             setReviewPage(1);
           }}
-          className="ftsstpbtn"
+          className="bk-button"
         >
           {" "}
-          {/* 1 to go to the first input page */}← Back to first Step
+          {/* 1 to go to the first input page */} Back to first Step
         </button>
         {reviewPage === totalPages && (
-          <button className="submit-btn" type="submit">
+          <button className="sbmt-button" type="submit">
             Create Product
           </button>
         )}
@@ -233,36 +233,58 @@ const ProductCreation = (props) => {
     </div>
   );
 
-  // Render User input page.
   const renderStepInputs = () => {
-    const questionsPerPage = 4; // Define the number of questions per page
+    const questionsPerPage = 4;
     const qSlice = userQuestions.slice(
       (step - 1) * questionsPerPage,
-      step * questionsPerPage // Use questionsPerPage here!
+      step * questionsPerPage
     );
-    return qSlice.map(({ key, text, type, options, placeholder }) => {
+    return qSlice.map(({ key, text, type, options, placeholder, add_note }) => {
       console.log(options, type);
       return (
-        <>
-          <div key={key} className="form-group">
-            <label>{text}</label>
-            <div className="options">
-              {type === "range" ? (
-                <label>
-                  <input
-                    type={type}
-                    name={key}
-                    min="0"
-                    max="10000"
-                    step="5"
-                    value={formData[key] || "0"}
-                    onChange={(e) => handleChange(e, key, type)}
-                  />
-                  {formData.TransactionLimit}
-                </label>
-              ) : options.length !== 0 ? (
-                options.map((option) => (
-                  <label key={option}>
+        <div key={key} style={{ marginBottom: "20px" }}>
+          <label style={{ fontWeight: "bold", display: "block" }}>{text}</label>
+          <div className="options">
+            {type === "dropdown" && options && options.length > 0 ? (
+              <select
+                id={key}
+                name={key}
+                value={formData[key] || ""}
+                onChange={(e) => handleChange(e, key, type)}
+                style={{ padding: "5px", width: "100%" }}
+              >
+                {options.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            ) : type === "range" ? (
+              <label>
+                <input
+                  type={type}
+                  name={key}
+                  min="0"
+                  max="10000"
+                  step="5"
+                  value={formData[key] || "0"}
+                  onChange={(e) => handleChange(e, key, type)}
+                />
+                {formData.TransactionLimit}
+              </label>
+            ) : options && options.length > 0 ? (
+              options.map((option) => (
+                <div
+                  className={
+                    type === "radio"
+                      ? "radio-group"
+                      : type === "checkbox"
+                      ? "checkbox-group"
+                      : ""
+                  }
+                  key={option}
+                >
+                  <label>
                     <input
                       type={type}
                       name={key}
@@ -276,57 +298,98 @@ const ProductCreation = (props) => {
                     />
                     {option}
                   </label>
-                ))
-              ) : (
-                <input
-                  type={type}
-                  name={key}
-                  value={formData[key] || ""}
-                  onChange={(e) => handleChange(e, key, type)}
-                  placeholder={placeholder || ""}
-                />
-              )}
-            </div>
+                </div>
+              ))
+            ) : (
+              <input
+                type={type}
+                name={key}
+                value={formData[key] || ""}
+                onChange={(e) => handleChange(e, key, type)}
+                placeholder={placeholder || ""}
+                style={{ padding: "5px", width: "100%" }}
+              />
+            )}
+            {formData["AutoRetry"] === "Yes" &&
+            add_note &&
+            add_note === true ? (
+              <label className="note-label">
+                Note : System will try to process the payment incase of
+                insufficient funds with in EOD
+              </label>
+            ) : (
+              <></>
+            )}
           </div>
-          {/* {formData["autoRetry"] === "Yes" ? (
-            <label>
-              Note : System will try to process the payment incase of
-              insufficient funds with in EOD
-            </label>
-          ) : (
-            <></>
-          )} */}
-        </>
+        </div>
       );
     });
   };
+  function navigateDashboard() {
+    navigate(-1);
+  }
+  console.log(reviewPage);
 
   return (
-    <div className="container-fluiid">
-      <div className="form-container">
-        <div className="header">
-          <h2 className="backlabel">{getProductHeading()}</h2>
-        </div>
-        <h3>
-          {step < totalSteps
-            ? `(Page ${step} of ${totalInputSteps})`
-            : `Review (Page ${reviewPage} of ${totalPages})`}
-        </h3>
-        <form onSubmit={handleSubmit}>
-          {step < totalSteps ? renderStepInputs() : renderReview()}
-          {step < totalSteps && (
-            <div className="button-group">
-              {step > 1 && (
-                <button type="button" onClick={prevStep} className="prvsbtn">
-                  Previous
-                </button>
-              )}
-              <button type="button" onClick={nextStep} className="nxtbtn">
-                Next →
-              </button>
+    <div className="container-fluid">
+      <div className="card">
+        <div className="leftpane">
+          <button onClick={navigateDashboard} className="arrbtn">
+            ←
+          </button>
+          <h1>PAYFEZ</h1>
+          <h2>{getProductHeading()}</h2>
+          <div className="progress-tracker-vertical">
+            <div
+              className={
+                step > totalInputSteps ? "step completed" : "step current"
+              }
+            >
+              <div className="circle">1</div>
+              <span>User Questions</span>
             </div>
-          )}
-        </form>
+            <div className="line"></div>
+            <div
+              className={
+                reviewPage === totalPages ? "step completed" : "step current"
+              }
+            >
+              <div className="circle">2</div>
+              <span>Summary</span>
+            </div>
+          </div>
+        </div>
+        <div className="rightpane">
+          <div className="form-container">
+            <div className="header">
+              <h2 className="backlabel">{getProductHeading()}</h2>
+            </div>
+            <h3>
+              {step < totalSteps
+                ? `(Page ${step} of ${totalInputSteps})`
+                : `Review (Page ${reviewPage} of ${totalPages})`}
+            </h3>
+            <form onSubmit={handleSubmit}>
+              {step < totalSteps ? renderStepInputs() : renderReview()}
+              {step < totalSteps && (
+                <div className="button-group">
+                  {step > 1 && (
+                    <button
+                      type="button"
+                      onClick={prevStep}
+                      className="prvsbtn"
+                    >
+                      Previous
+                    </button>
+                  )}
+                  <button type="button" onClick={nextStep} className="nxtbtn">
+                    Next →
+                  </button>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

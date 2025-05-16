@@ -13,10 +13,11 @@ export const actrfUserQuestions = [
     options: ["USD", "EUR", "GBP"],
   },
   {
-    key: "autoRetry",
+    key: "AutoRetry",
     text: "Do you want the system to retry the processing of payment in case of insufficient fund ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "allowChargeOption",
@@ -94,10 +95,11 @@ export const actrfOtherUserQuestions = [
     options: ["USD", "EUR", "GBP"],
   },
   {
-    key: "autoRetry",
+    key: "AutoRetry",
     text: "Do you want the system to retry the processing of payment in case of insufficient fund ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "TransactionLimit",
@@ -165,7 +167,7 @@ export const domesticUserQuestions = [
   {
     key: "clearingName",
     text: "Do you have clearing name for the payment?",
-    type: "input",
+    type: "text",
     options: "",
   },
   {
@@ -185,11 +187,12 @@ export const domesticUserQuestions = [
     text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "currencyid",
-    text: "What are the currencies you need for this payment?",
-    type: "checkbox",
+    text: "Which currency you need for this payment?",
+    type: "dropdown",
     options: ["USD", "EUR", "GBP"],
   },
   {
@@ -310,6 +313,7 @@ export const SepaUserQuestions = [
     text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "TransactionLimit",
@@ -437,6 +441,7 @@ export const SepaInstUserQuestions = [
     text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "TransactionLimit",
@@ -564,6 +569,7 @@ export const inationalUserQuestions = [
     text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
   {
     key: "TransactionLimit",

@@ -6,6 +6,12 @@ import DashboardCard from "../components/Dashboard_Card";
 export default function Dashboard() {
   return (
     <>
+      <div class="top-nav">
+        <img src="./payment_logo.png" alt="aspire logo" width="90px" />
+        <a href="http://172.24.133.69/aio/aio.html">
+          <img src="./Aspire_logo.svg" alt="aspire logo" width="100px" />
+        </a>
+      </div>
       <div className="dashboard-wrapper">
         <div className="dashboard-card">
           <h1 className="dashboard-title">
