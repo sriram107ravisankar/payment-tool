@@ -14,16 +14,20 @@ export default async function postSepaTransfer(formData) {
       chargeOptions: [
         {
           chargeOption:
-            formData.allowChargeOption === "NO" ? "" : formData.chargeOptions,
+            formData.allowChargeOption.toUpperCase() === "NO"
+              ? ""
+              : formData.chargeOptions,
         },
       ],
       gbDescription: "Sepa Payment",
-      futureDate: formData.Allowfuturedate,
+      futureDate: formData.futureDate.toUpperCase(),
       allowFx: "YES",
       FXRate: "YES",
       transactionLimit: formData.TransactionLimit,
       allowSortCode:
-        formData.allowSortCode === "YES" ? "ALLOWED" : "NOT ALLOWED",
+        formData.allowSortCode.toUpperCase() === "YES"
+          ? "ALLOWED"
+          : "NOT ALLOWED",
       ClearingChannel: "STEP2",
       allowRequestedCurrency: "NO",
       allowRequiredCreditValue: "NO",
@@ -37,16 +41,19 @@ export default async function postSepaTransfer(formData) {
       warehouseReqd: "YES",
       allowIban: "MANDATORY",
       allowBic: "ALLOWED",
-      fraudCheckReqd: "YES",
+      fraudCheckReqd: formData["Fraud Check Reqd"].toUpperCase() || "NO",
       rateTolerancePercent: formData.RateTolerantPercent,
-      reachabilityCheck: formData["Reachability Check"] === "YES" ? "BIC" : "",
+      reachabilityCheck:
+        formData["Reachability Check"].toUpperCase() === "YES" ? "BIC" : "",
       cutOffTime: formData.CutOffTime,
     },
   };
 
   console.log("body: ", JSON.stringify(payload));
   try {
-    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/SEPA1/create`;
+    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/${
+      formData.clearingName ? formData.clearingName : SEPA1
+    }/create`;
 
     const response = await fetch(endpoint, {
       method: "POST",

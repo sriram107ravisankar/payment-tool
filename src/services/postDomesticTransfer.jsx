@@ -10,19 +10,21 @@ export default async function postDomesticTransfer(formData) {
           ],
         },
       ],
-      payments: formData.currencyid.map((ccy) => {
-        return {
-          currencyId: ccy,
-        };
-      }),
+      payments: [
+        {
+          currencyId: formData.currencyid,
+        },
+      ],
       chargeOptions: [
         {
           chargeOption:
-            formData.allowChargeOption === "No" ? "" : formData.chargeOptions,
+            formData.allowChargeOption.toUpperCase() === "NO"
+              ? ""
+              : formData.chargeOptions,
         },
       ],
       gbDescription: "Domestic Payment",
-      futureDate: formData.Allowfuturedate,
+      futureDate: formData.futureDate.toUpperCase() || "NO",
       allowFx: "YES",
       FXRate: "YES",
       transactionLimit: formData.TransactionLimit,
@@ -36,13 +38,18 @@ export default async function postDomesticTransfer(formData) {
       payThroughBeneficiary: "YES",
       duplicateCheck: "PH-OUTGOING",
       warehouseReqd: "YES",
-      allowIban: formData.IBAN === "YES" ? "ALLOWED" : "NOT ALLOWED",
-      allowBic: formData.BIC === "YES" ? "ALLOWED" : "NOT ALLOWED",
+      allowIban:
+        formData.IBAN.toUpperCase() === "YES" ? "ALLOWED" : "NOT ALLOWED",
+      allowBic:
+        formData.BIC.toUpperCase() === "YES" ? "ALLOWED" : "NOT ALLOWED",
       allowSortCode:
-        formData.allowSortCode === "YES" ? "ALLOWED" : "NOT ALLOWED",
-      fraudCheckReqd: "YES",
+        formData.allowSortCode.toUpperCase() === "YES"
+          ? "ALLOWED"
+          : "NOT ALLOWED",
+      fraudCheckReqd: formData["Fraud Check Reqd"].toUpperCase() || "YES",
       rateTolerancePercent: formData.RateTolerantPercent,
-      reachabilityCheck: formData["Reachability Check"] === "YES" ? "BIC" : "",
+      reachabilityCheck:
+        formData["Reachability Check"].toUpperCase() === "YES" ? "BIC" : "",
       cutOffTime: formData.CutOffTime,
     },
   };

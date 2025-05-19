@@ -1,8 +1,14 @@
 // ACCOUNT TRANSFER HOME QUESTIONS
 export const actrfUserQuestions = [
   {
+    key: "clearingName",
+    text: "Do you have preferred name for this payment product?",
+    type: "text",
+    options: "",
+  },
+  {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -48,11 +54,7 @@ export const actrfMetaQuestions = [
     text: "Is exchange rate needed?",
     value: "Yes",
   },
-  {
-    key: "simulationForValidation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
+
   {
     key: "restrictionCheckAccounts",
     text: "Is restriction check needed for debit and credit accounts ?",
@@ -78,13 +80,24 @@ export const actrfMetaQuestions = [
     text: "Do you need to check Duplicate Entry for Payment ?",
     value: "Yes",
   },
+  {
+    key: "simulationForValidation",
+    text: "Do you need Simulation for the validation of Payment ?",
+    value: "Yes",
+  },
 ];
 
 // ACCOUNT TRANSFER OTHER QUESTIONS
 export const actrfOtherUserQuestions = [
   {
+    key: "clearingName",
+    text: "Do you have preferred name for this payment product?",
+    type: "text",
+    options: "",
+  },
+  {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -95,17 +108,17 @@ export const actrfOtherUserQuestions = [
     options: ["USD", "EUR", "GBP"],
   },
   {
+    key: "TransactionLimit",
+    text: "What is the Maximum limit for a single payment transaction ?",
+    type: "range",
+    options: ["10000"],
+  },
+  {
     key: "AutoRetry",
     text: "Do you want the system to retry the processing of payment in case of insufficient fund ?",
     type: "radio",
     options: ["Yes", "No"],
     add_note: true,
-  },
-  {
-    key: "TransactionLimit",
-    text: "What is the Maximum limit for a single payment transaction ?",
-    type: "range",
-    options: ["10000"],
   },
   {
     key: "checkFundsAvailabilityWithCharges",
@@ -136,11 +149,7 @@ export const actrfOtherMetaQuestions = [
     text: "Is exchange rate needed?",
     value: "Yes",
   },
-  {
-    key: "simulationForValidation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
+
   {
     key: "restrictionCheckAccounts",
     text: "Is restriction check needed for debit and credit accounts ?",
@@ -161,18 +170,60 @@ export const actrfOtherMetaQuestions = [
     text: "Do you need to check Duplicate Entry for Payment ?",
     value: "Yes",
   },
+  {
+    key: "simulationForValidation",
+    text: "Do you need Simulation for the validation of Payment ?",
+    value: "Yes",
+  },
 ];
 // DOMESTIC QUESTIONS
 export const domesticUserQuestions = [
   {
     key: "clearingName",
-    text: "Do you have clearing name for the payment?",
+    text: "Do you have preferred name for this payment product?",
     type: "text",
     options: "",
   },
   {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "currencyid",
+    text: "Which currency you need for this payment?",
+    type: "radio",
+    options: ["USD", "EUR", "GBP"],
+  },
+  {
+    key: "TransactionLimit",
+    text: "What is the Maximum limit for a single payment transaction ?",
+    type: "range",
+    options: ["10000"],
+  },
+  {
+    key: "Fraud Check Reqd",
+    text: "Is Fraud Check Required for the Payment?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "Reachability Check",
+    text: "Do you need to verify the receiver bank participation for payment?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+
+  {
+    key: "IBAN",
+    text: "Do you need IBAN for this payment?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "BIC",
+    text: "Do you need BIC for this payment?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -183,48 +234,26 @@ export const domesticUserQuestions = [
     options: ["Yes", "No"],
   },
   {
-    key: "AutoRetry",
-    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
-    type: "radio",
-    options: ["Yes", "No"],
-    add_note: true,
-  },
-  {
-    key: "currencyid",
-    text: "Which currency you need for this payment?",
-    type: "dropdown",
-    options: ["USD", "EUR", "GBP"],
-  },
-  {
-    key: "TransactionLimit",
-    text: "What is the Maximum limit for a single payment transaction ?",
-    type: "range",
-    options: ["10000"],
-  },
-  {
     key: "checkFundsWithCharges",
     text: "Do you want to check funds availability with charges?",
     type: "radio",
     options: ["Yes", "No"],
   },
   {
-    key: "Fraud Check Reqd",
-    text: "Is Fraud Check Required for the Payment?",
+    key: "AutoRetry",
+    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
+
   {
     key: "RateTolerantPercent",
-    text: "What is the percentage for transaction exceeding a pre set  exchange rate limit ?",
+    text: "What is the percentage of tolerance for transactions where exchange rate  exceeds a pre set  limit ?",
     type: "text",
     options: [],
   },
-  {
-    key: "Reachability Check",
-    text: "Do you need to verify the receiver bank participation for payment?",
-    type: "radio",
-    options: ["Yes", "No"],
-  },
+
   {
     key: "CutOffTime",
     text: "what is the cut off time for the last payment to be processed in the same day?",
@@ -235,18 +264,6 @@ export const domesticUserQuestions = [
   {
     key: "allowChargeOption",
     text: "Do you want to apply charges for the Payments?",
-    type: "radio",
-    options: ["Yes", "No"],
-  },
-  {
-    key: "IBAN",
-    text: "Do you need IBAN for this payment?",
-    type: "radio",
-    options: ["Yes", "No"],
-  },
-  {
-    key: "BIC",
-    text: "Do you need BIC for this payment?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -267,11 +284,7 @@ export const domesticMetaQuestions = [
     text: "Is exchange rate needed ?",
     value: "Yes",
   },
-  {
-    key: "Simulation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
+
   {
     key: "Restriction",
     text: "Is restriction check needed for debit and credit accounts ?",
@@ -292,13 +305,42 @@ export const domesticMetaQuestions = [
     text: "Do you need to check Duplicate Entry for Payment ?",
     value: "Yes",
   },
+  {
+    key: "Simulation",
+    text: "Do you need Simulation for the validation of Payment ?",
+    value: "Yes",
+  },
 ];
 
 // SEPA QUESTIONS
 export const SepaUserQuestions = [
   {
+    key: "clearingName",
+    text: "Do you have preferred name for this payment product?",
+    type: "text",
+    options: "",
+  },
+  {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "TransactionLimit",
+    text: "What is the Maximum limit for a single payment transaction ?",
+    type: "range",
+    options: ["10000"],
+  },
+  {
+    key: "Fraud Check Reqd",
+    text: "Is Fraud Check required for the Payment?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "Reachability Check",
+    text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -309,42 +351,26 @@ export const SepaUserQuestions = [
     options: ["Yes", "No"],
   },
   {
-    key: "AutoRetry",
-    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
-    type: "radio",
-    options: ["Yes", "No"],
-    add_note: true,
-  },
-  {
-    key: "TransactionLimit",
-    text: "What is the Maximum limit for a single payment transaction ?",
-    type: "range",
-    options: ["10000"],
-  },
-  {
     key: "checkFundsWithCharges",
     text: "Do you want to check funds availability with charges ?",
     type: "radio",
     options: ["Yes", "No"],
   },
   {
-    key: "Fraud Check Reqd",
-    text: "Is Fraud Check required for the Payment?",
+    key: "AutoRetry",
+    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
+
   {
     key: "RateTolerantPercent",
-    text: "What is the percentage for transaction exceeding a pre set  exchange rate limit ?",
+    text: "What is the percentage of tolerance for transactions where exchange rate  exceeds a pre set  limit ?",
     type: "text",
     options: [],
   },
-  {
-    key: "Reachability Check",
-    text: "Do you need to verify the receiver bank participation for payment ?",
-    type: "radio",
-    options: ["Yes", "No"],
-  },
+
   {
     key: "CutOffTime",
     text: "what is the cut off time for the last payment to be processed in the same day?",
@@ -361,6 +387,16 @@ export const SepaUserQuestions = [
 ];
 export const SepaMetaQuestions = [
   {
+    key: "clearing_code",
+    text: "Which Clearing will be used for this payment product?",
+    value: "STEP2",
+  },
+  {
+    key: "ccy",
+    text: "What are the currencies you need for this payment? ",
+    value: "EUR",
+  },
+  {
     key: "Beneficiary",
     text: "Should payment go through Beneficiary ?",
     value: "Yes",
@@ -375,21 +411,7 @@ export const SepaMetaQuestions = [
     text: "Is exchange rate needed ?",
     value: "Yes",
   },
-  {
-    key: "ccy",
-    text: "What are the currencies you need for this payment? ",
-    value: "EUR",
-  },
-  {
-    key: "clearing_code",
-    text: "Which Clearing will be used for this payment product?",
-    value: "STEP2",
-  },
-  {
-    key: "Simulation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
+
   {
     key: "Restriction",
     text: "Is restriction check needed for debit and credit accounts ?",
@@ -420,13 +442,42 @@ export const SepaMetaQuestions = [
     text: "Do you need BIC for this payment?",
     value: "Yes",
   },
+  {
+    key: "Simulation",
+    text: "Do you need Simulation for the validation of Payment ?",
+    value: "Yes",
+  },
 ];
 
 // SEPA INST QUESTIONS
 export const SepaInstUserQuestions = [
   {
+    key: "clearingName",
+    text: "Do you have preferred name for this payment product?",
+    type: "text",
+    options: "",
+  },
+  {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "TransactionLimit",
+    text: "What is the Maximum limit for a single payment transaction ?",
+    type: "range",
+    options: ["10000"],
+  },
+  {
+    key: "Fraud Check Reqd",
+    text: "Is Fraud Check required for the Payment?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "Reachability Check",
+    text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -437,42 +488,26 @@ export const SepaInstUserQuestions = [
     options: ["Yes", "No"],
   },
   {
-    key: "AutoRetry",
-    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
-    type: "radio",
-    options: ["Yes", "No"],
-    add_note: true,
-  },
-  {
-    key: "TransactionLimit",
-    text: "What is the Maximum limit for a single payment transaction ?",
-    type: "range",
-    options: ["10000"],
-  },
-  {
     key: "checkFundsWithCharges",
     text: "Do you want to check funds availability with charges ?",
     type: "radio",
     options: ["Yes", "No"],
   },
   {
-    key: "Fraud Check Reqd",
-    text: "Is Fraud Check required for the Payment?",
+    key: "AutoRetry",
+    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
     type: "radio",
     options: ["Yes", "No"],
+    add_note: true,
   },
+
   {
     key: "RateTolerantPercent",
-    text: "What is the percentage for transaction exceeding a pre set  exchange rate limit ?",
+    text: "What is the percentage of tolerance for transactions where exchange rate  exceeds a pre set  limit ?",
     type: "text",
     options: [],
   },
-  {
-    key: "Reachability Check",
-    text: "Do you need to verify the receiver bank participation for payment ?",
-    type: "radio",
-    options: ["Yes", "No"],
-  },
+
   {
     key: "CutOffTime",
     text: "what is the cut off time for the last payment to be processed in the same day?",
@@ -489,6 +524,11 @@ export const SepaInstUserQuestions = [
 ];
 export const SepaInstMetaQuestions = [
   {
+    key: "ccy",
+    text: "What are the currencies you need for this payment? ",
+    value: "EUR",
+  },
+  {
     key: "Beneficiary",
     text: "Should payment go through Beneficiary ?",
     value: "Yes",
@@ -503,21 +543,13 @@ export const SepaInstMetaQuestions = [
     text: "Is exchange rate needed ?",
     value: "Yes",
   },
-  {
-    key: "ccy",
-    text: "What are the currencies you need for this payment? ",
-    value: "EUR",
-  },
+
   {
     key: "clearing_code",
     text: "Which Clearing will be used for this payment product?",
     value: "EBAINST",
   },
-  {
-    key: "Simulation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
+
   {
     key: "Restriction",
     text: "Is restriction check needed for debit and credit accounts ?",
@@ -534,11 +566,6 @@ export const SepaInstMetaQuestions = [
     value: "Yes",
   },
   {
-    key: "Duplicate",
-    text: "Do you need to check Duplicate Entry for Payment ?",
-    value: "Yes",
-  },
-  {
     key: "IBAN",
     text: "Do you need IBAN for this payment?",
     value: "Yes",
@@ -548,13 +575,29 @@ export const SepaInstMetaQuestions = [
     text: "Do you need BIC for this payment?",
     value: "Yes",
   },
+  {
+    key: "Duplicate",
+    text: "Do you need to check Duplicate Entry for Payment ?",
+    value: "Yes",
+  },
+  {
+    key: "Simulation",
+    text: "Do you need Simulation for the validation of Payment ?",
+    value: "Yes",
+  },
 ];
 
 // INATIONAL QUESTIONS
 export const inationalUserQuestions = [
   {
+    key: "clearingName",
+    text: "Do you have preferred name for this payment product?",
+    type: "text",
+    options: "",
+  },
+  {
     key: "futureDate",
-    text: "Do you need to allow payments to process in future?",
+    text: "Do you want to allow payments for future date ?",
     type: "radio",
     options: ["Yes", "No"],
   },
@@ -565,23 +608,10 @@ export const inationalUserQuestions = [
     options: ["USD", "EUR", "GBP"],
   },
   {
-    key: "AutoRetry",
-    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
-    type: "radio",
-    options: ["Yes", "No"],
-    add_note: true,
-  },
-  {
     key: "TransactionLimit",
     text: "What is the Maximum limit for a single payment transaction ?",
     type: "range",
     options: ["10000"],
-  },
-  {
-    key: "checkFundsWithCharges",
-    text: "Do you want to check funds availability with charges?",
-    type: "radio",
-    options: ["Yes", "No"],
   },
   {
     key: "Fraud Check Reqd",
@@ -590,16 +620,29 @@ export const inationalUserQuestions = [
     options: ["Yes", "No"],
   },
   {
-    key: "RateTolerantPercent",
-    text: "What is the percentage for transaction exceeding a pre set  exchange rate limit ?",
-    type: "text",
-    options: [],
-  },
-  {
     key: "Reachability Check",
     text: "Do you need to verify the receiver bank participation for payment ?",
     type: "radio",
     options: ["Yes", "No"],
+  },
+  {
+    key: "checkFundsWithCharges",
+    text: "Do you want to check funds availability with charges?",
+    type: "radio",
+    options: ["Yes", "No"],
+  },
+  {
+    key: "AutoRetry",
+    text: "Do you want the system to retry the processing of payment incase of insufficient funds ?",
+    type: "radio",
+    options: ["Yes", "No"],
+    add_note: true,
+  },
+  {
+    key: "RateTolerantPercent",
+    text: "What is the percentage of tolerance for transactions where exchange rate  exceeds a pre set  limit ?",
+    type: "text",
+    options: [],
   },
   {
     key: "CutOffTime",
@@ -632,11 +675,6 @@ export const inationalMetaQuestions = [
     value: "Yes",
   },
   {
-    key: "Simulation",
-    text: "Do you need Simulation for the validation of Payment ?",
-    value: "Yes",
-  },
-  {
     key: "Restriction",
     text: "Is restriction check needed for debit and credit accounts ?",
     value: "Debit",
@@ -652,11 +690,6 @@ export const inationalMetaQuestions = [
     value: "Yes",
   },
   {
-    key: "Duplicate",
-    text: "Do you need to check Duplicate Entry for Payment ?",
-    value: "Yes",
-  },
-  {
     key: "IBAN",
     text: "Do you need IBAN for this payment?",
     value: "Yes",
@@ -664,6 +697,17 @@ export const inationalMetaQuestions = [
   {
     key: "BIC",
     text: "Do you need BIC for this payment?",
+    value: "Yes",
+  },
+  {
+    key: "Duplicate",
+    text: "Do you need to check Duplicate Entry for Payment ?",
+    value: "Yes",
+  },
+
+  {
+    key: "Simulation",
+    text: "Do you need Simulation for the validation of Payment ?",
     value: "Yes",
   },
 ];

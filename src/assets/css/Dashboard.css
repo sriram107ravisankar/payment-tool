@@ -91,7 +91,7 @@
 
 /* Individual card */
 .payment-option {
-  background: white;
+  /* background: white; */
   border-radius: 10px;
   padding: 1.5rem;
   text-align: center;
@@ -106,6 +106,8 @@
   align-items: center;
   background-color: var(--secondary);
   position: relative;
+  background: #ffffff1a;
+  backdrop-filter: blur(10px);
 }
 
 .payment-option:hover {

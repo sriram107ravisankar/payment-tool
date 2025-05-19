@@ -174,7 +174,7 @@ const ProductCreation = (props) => {
     })),
   ];
 
-  const chunkSize = 5;
+  const chunkSize = 4;
   const totalPages = Math.ceil(allReviewQuestions.length / chunkSize);
   const currentChunk = allReviewQuestions.slice(
     (reviewPage - 1) * chunkSize,
@@ -192,43 +192,43 @@ const ProductCreation = (props) => {
           </li>
         ))}
       </ul>
-
-      <div className="button-group">
-        <button
-          type="button"
-          className="prvsbtn"
-          onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
-          disabled={reviewPage === 1}
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          className="nxtbtn"
-          onClick={() => setReviewPage((p) => Math.min(totalPages, p + 1))}
-          disabled={reviewPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
-
-      <div className="button-group2">
-        <button
-          type="button"
-          onClick={() => {
-            setStep(1);
-            setReviewPage(1);
-          }}
-          className="bk-button"
-        >
-          {" "}
-          {/* 1 to go to the first input page */} Back to first Step
-        </button>
-        {reviewPage === totalPages && (
-          <button className="sbmt-button" type="submit">
-            Create Product
+      <div className="btn-grp">
+        <div className="button-group">
+          <button
+            type="button"
+            onClick={() => {
+              setStep(1);
+              setReviewPage(1);
+            }}
+            className="nxtbtn"
+          >
+            {" "}
+            {/* 1 to go to the first input page */} Back to first Step
           </button>
-        )}
+        </div>
+        <div className="button-group">
+          <button
+            type="button"
+            className="prvsbtn"
+            onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
+            disabled={reviewPage === 1}
+          >
+            Previous
+          </button>
+          {reviewPage === totalPages && (
+            <button className="sbmt-button" type="submit">
+              Create Product
+            </button>
+          )}
+          <button
+            type="button"
+            className="nxtbtn"
+            onClick={() => setReviewPage((p) => Math.min(totalPages, p + 1))}
+            disabled={reviewPage === totalPages}
+          >
+            Next →
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -265,8 +265,8 @@ const ProductCreation = (props) => {
                   type={type}
                   name={key}
                   min="0"
-                  max="10000"
-                  step="5"
+                  max="100000"
+                  step="5000"
                   value={formData[key] || "0"}
                   onChange={(e) => handleChange(e, key, type)}
                 />
@@ -369,6 +369,7 @@ const ProductCreation = (props) => {
                 ? `(Page ${step} of ${totalInputSteps})`
                 : `Review (Page ${reviewPage} of ${totalPages})`}
             </h3>
+            {/* style={{ paddingTop: 10 }} */}
             <form onSubmit={handleSubmit}>
               {step < totalSteps ? renderStepInputs() : renderReview()}
               {step < totalSteps && (

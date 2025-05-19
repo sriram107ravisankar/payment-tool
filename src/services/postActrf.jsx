@@ -17,11 +17,11 @@ export default async function postAccountTransfer(formData) {
       }), // fallback to USD if undefined
       chargeOptions: [
         {
-          chargeOption: "", // you can update this if needed
+          chargeOption: formData.chargeOptions || "", // you can update this if needed
         },
       ],
       gbDescription: "Account Transfer (Sample)",
-      futureDate: formData.futurePayments || "NO",
+      futureDate: formData.futureDate.toUpperCase() || "NO",
       defaultChargeOption: "",
       allowFx: "YES",
       FXRate: "YES",
@@ -29,7 +29,7 @@ export default async function postAccountTransfer(formData) {
       allowRequiredCreditValue: "NO",
       chkAcctRestrict: "BOTH",
       reserveFunds: "YES",
-      autoRetry: formData.retryProcessing || "NO",
+      autoRetry: formData.AutoRetry.toUpperCase() || "NO",
       checkFundsWithCharges: "NO",
       checkTransparency: "YES",
       payThroughBeneficiary: "NO",
@@ -40,7 +40,9 @@ export default async function postAccountTransfer(formData) {
 
   console.log("body: ", JSON.stringify(payload));
   try {
-    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/ACHOME/create`;
+    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/${
+      formData.clearingName ? formData.clearingName : ACHOME
+    }/create`;
 
     const response = await fetch(endpoint, {
       method: "POST",

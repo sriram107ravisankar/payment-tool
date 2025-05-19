@@ -22,7 +22,7 @@ export default async function postInationalTransfer(formData) {
         },
       ],
       gbDescription: "International Payment",
-      futureDate: formData.Allowfuturedate,
+      futureDate: formData.futureDate.toUpperCase(),
       allowFx: "YES",
       FXRate: "YES",
       transactionLimit: formData.TransactionLimit,
@@ -38,7 +38,7 @@ export default async function postInationalTransfer(formData) {
       warehouseReqd: "YES",
       allowIban: "ALLOWED",
       allowBic: "ALLOWED",
-      fraudCheckReqd: "YES",
+      fraudCheckReqd: formData["Fraud Check Reqd"].toUpperCase(),
       rateTolerancePercent: formData.RateTolerantPercent,
       reachabilityCheck: formData["Reachability Check"] === "Yes" ? "BIC" : "",
       cutOffTime: formData.CutOffTime,
@@ -47,7 +47,9 @@ export default async function postInationalTransfer(formData) {
 
   console.log("body: ", JSON.stringify(payload));
   try {
-    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/INATION1/create`;
+    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/${
+      formData.clearingName ? formData.clearingName : INATION1
+    }/create`;
 
     const response = await fetch(endpoint, {
       method: "POST",

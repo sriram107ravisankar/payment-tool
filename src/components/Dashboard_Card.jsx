@@ -8,11 +8,11 @@ export default function DashboardCard(props) {
 
   return (
     <>
-      {JSON.parse(localStorage.getItem(product_type)) ? (
+      {/* {JSON.parse(localStorage.getItem(product_type)) ? (
         <img src={greenTick} className="green_tick"></img>
       ) : (
         <></>
-      )}
+      )} */}
       <div className="payment-icon">{payment_icon}</div>
       <h2 className="payment-title">{payment_title}</h2>
       <p className="payment-description">{payment_description}</p>

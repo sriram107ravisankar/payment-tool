@@ -17,20 +17,22 @@ export default async function postAccountTransferOther(formData) {
       }), // fallback to USD if undefined
       chargeOptions: [
         {
-          chargeOption: "", // you can update this if needed
+          chargeOption: formData.chargeOptions || "", // you can update this if needed
         },
       ],
       gbDescription: "Account Transfer (Sample)",
-      futureDate: formData.futurePayments || "NO",
+      futureDate: formData.futureDate.toUpperCase() || "NO",
       defaultChargeOption: "",
       allowFx: "YES",
       FXRate: "YES",
+      transactionLimit: formData.TransactionLimit,
       allowRequestedCurrency: "NO",
       allowRequiredCreditValue: "NO",
       chkAcctRestrict: "BOTH",
       reserveFunds: "YES",
-      autoRetry: formData.retryProcessing || "NO",
-      checkFundsWithCharges: "NO",
+      autoRetry: formData.AutoRetry.toUpperCase() || "NO",
+      checkFundsWithCharges:
+        formData.checkFundsAvailabilityWithCharges.toUpperCase() || "NO",
       checkTransparency: "YES",
       payThroughBeneficiary: "NO",
       duplicateCheck: "PH-BOOK",
@@ -39,7 +41,9 @@ export default async function postAccountTransferOther(formData) {
   };
   console.log("body: ", JSON.stringify(payload));
   try {
-    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/ACOTH1/create`;
+    const endpoint = `http://172.24.133.69/PaymentAccelerator/api/v1.0.0/party/paymentorderproduct/${
+      formData.clearingName ? formData.clearingName : ACOTH1
+    }/create`;
 
     const response = await fetch(endpoint, {
       method: "POST",
